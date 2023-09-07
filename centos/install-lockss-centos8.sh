@@ -101,23 +101,23 @@ rpm --import http://www.lockss.org/LOCKSS-GPG-RPM-KEY
 #   nmap - network diagnostics
 #   pciutils - PCI utilities
 #   rsync - rsync command
+#   sendmail - sendmail daemon
 #   smartmontools - smartctl, etc
 #   sysstat - iostat, vmstat, etc
+#   tar - tar command
 #   tmux - multi-session tool
 #   wget - wget command
-dnf -y install lockss-daemon java-1.8.0-openjdk bind-utils dnf-automatic dstat git iotop lshw lsof mailx nmap pciutils rsync smartmontools sysstat tmux wget
-
-# Other tools for internal servers
-# dnf -y install emacs-nox zip unzip 
+#   zip - zip tools
+dnf -y install lockss-daemon java-1.8.0-openjdk bind-utils dnf-automatic dstat git iotop lshw lsof mailx nmap pciutils rsync sendmail smartmontools sysstat tar tmux wget zip
 
 # Configure dnf-automatic for automatic updates
 sed -i 's|^apply_updates = no|apply_updates = yes|' /etc/dnf/automatic.conf
 sed -i 's|^emit_via = stdio|emit_via = email|' /etc/dnf/automatic.conf
 
-# Add LOCKSS to the list of services and enable LOCKSS and dnf-automatic
-# to start on boot
+# Enable LOCKSS, dnf-automatic, and sendmail to start at boot time
 systemctl enable lockss
 systemctl enable --now dnf-automatic.timer
+systemctl enable --now sendmail
 
 # Inject iptables rules for LOCKSS ports 
 firewall-cmd --zone=public --add-port=8080-8086/tcp --permanent
