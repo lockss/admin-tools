@@ -102,13 +102,14 @@ rpm --import http://www.lockss.org/LOCKSS-GPG-RPM-KEY
 #   pciutils - PCI utilities
 #   postfix - postfix mail transfer agent
 #   rsync - rsync command
+#   rsyslog - Linux system logging support
 #   smartmontools - smartctl, etc
 #   sysstat - iostat, vmstat, etc
 #   tar - tar command
 #   tmux - multi-session tool
 #   wget - wget command
 #   zip - zip tools
-dnf -y install lockss-daemon java-1.8.0-openjdk bind-utils dnf-automatic dstat git iotop lshw lsof mailx nmap pciutils postfix rsync smartmontools sysstat tar tmux wget zip
+dnf -y install lockss-daemon java-1.8.0-openjdk bind-utils dnf-automatic dstat git iotop lshw lsof mailx nmap pciutils postfix rsync rsyslog smartmontools sysstat tar tmux wget zip
 
 # Configure dnf-automatic for automatic updates
 sed -i 's|^apply_updates = no|apply_updates = yes|' /etc/dnf/automatic.conf
@@ -118,6 +119,7 @@ sed -i 's|^emit_via = stdio|emit_via = email|' /etc/dnf/automatic.conf
 systemctl enable lockss
 systemctl enable --now dnf-automatic.timer
 systemctl enable --now postfix
+systemctl enable --now rsyslog
 
 # Inject iptables rules for LOCKSS ports 
 firewall-cmd --zone=public --add-port=8080-8086/tcp --permanent
