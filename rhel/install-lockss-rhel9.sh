@@ -122,6 +122,7 @@ sed -i 's|^emit_via = stdio|emit_via = email|' /etc/dnf/automatic.conf
 # to start on boot
 systemctl enable lockss
 systemctl enable --now dnf-automatic.timer
+systemctl enable --now postfix
 
 # Inject iptables rules for LOCKSS ports 
 firewall-cmd --zone=public --add-port=8080-8086/tcp --permanent
