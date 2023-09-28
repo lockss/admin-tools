@@ -100,16 +100,16 @@ rpm --import http://www.lockss.org/LOCKSS-GPG-RPM-KEY
 #   lsof - lsof command
 #   nmap - network diagnostics
 #   pciutils - PCI utilities
+#   postfix - postfix mail transfer agent
 #   rsync - rsync command
 #   s-nail - mail command
-#   sendmail - sendmail daemon
 #   smartmontools - smartctl, etc
 #   sysstat - iostat, vmstat, etc
 #   tar - tar command
 #   tmux - multi-session tool
 #   wget - wget command
 #   zip - zip and unzip commands
-dnf -y install lockss-daemon java-1.8.0-openjdk bind-utils dnf-automatic dstat git initscripts iotop lshw lsof nmap pciutils rsync s-nail smartmontools sysstat tar tmux wget zip
+dnf -y install lockss-daemon java-1.8.0-openjdk bind-utils dnf-automatic dstat git initscripts iotop lshw lsof nmap pciutils postfix rsync s-nail smartmontools sysstat tar tmux wget zip
 
 # Other tools for internal servers
 # dnf -y install emacs-nox zip unzip 
