@@ -91,7 +91,7 @@ rpm --import http://www.lockss.org/LOCKSS-GPG-RPM-KEY
 #   lockss-daemon - LOCKSS software
 #   java-<vers>=openjdk - Java runtime
 #   bind-utils - nslookup, host, etc
-#   dnf-automatic - automatic updates for CentOS8
+#   dnf-automatic - automatic software update
 #   dstat - dstat command
 #   git - git command
 #   initscripts - sysv init scripts
