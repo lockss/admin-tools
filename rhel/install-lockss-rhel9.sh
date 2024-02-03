@@ -124,7 +124,7 @@ systemctl enable lockss
 systemctl enable --now dnf-automatic.timer
 systemctl enable --now postfix
 
-# Inject iptables rules for LOCKSS ports 
+# Firewalld rules for LOCKSS ports 
 firewall-cmd --zone=public --add-port=8080-8086/tcp --permanent
 firewall-cmd --zone=public --add-port=9729/tcp --permanent
 firewall-cmd --reload
